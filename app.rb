@@ -10,9 +10,5 @@ class Chitter < Sinatra::Base
     'Chitterland'
   end
 
-  get '/user_account' do
-    'Hello'
-  end
-
   run! if app_file == $0
 end
