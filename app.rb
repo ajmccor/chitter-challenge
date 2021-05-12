@@ -10,5 +10,12 @@ class Chitter < Sinatra::Base
     'Chitterland'
   end
 
+  get '/peeps' do
+    peep = ["Peeps ahoy!", 
+            "Dis peep, dat peep"].join(" ")
+  end
+
+
+
   run! if app_file == $0
 end
