@@ -1,5 +1,10 @@
 require 'simplecov'
 require 'simplecov-console'
+require_relative './clear_test_db'
+
+ENV['ENVIRONMENT'] = 'test'
+ENV['RACK_ENV'] = 'test'
+
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
   SimpleCov::Formatter::Console,
@@ -10,12 +15,8 @@ SimpleCov.start
 
 RSpec.configure do |config|
   config.after(:suite) do
-    puts
-    puts "\e[33mHave you considered running rubocop? It will help you improve your code!\e[0m"
-    puts "\e[33mTry it now! Just run: rubocop\e[0m"
+    clear_test_db
   end
-
-  ENV['RACK_ENV'] = 'test'
 
 require File.join(File.dirname(__FILE__), '..', 'app.rb')
 

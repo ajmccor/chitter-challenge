@@ -1,6 +1,20 @@
+require 'pg'
+
 feature 'viewing chitter' do
   scenario 'visiting the index page' do
     visit('/')
-    expect(page).to have_content "Chitterland"
+    expect(page).to have_content "Chitter land"
   end
 end
+
+feature 'viewing peeps' do
+  scenario 'A user can see all peeps' do
+    connection = PG.connect(dbname: 'chitter_test')
+
+    connection.exec("INSERT INTO peeps (content) VALUES('Peeps ahoy!');")
+
+    visit('/peeps')
+    expect(page).to have_content('Peeps ahoy!')
+  end
+end
+
