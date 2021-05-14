@@ -14,4 +14,10 @@ describe Peep do
             expect(peeps).to include("Dis peep, dat peep")
         end
     end
+
+    describe '.create_peep' do
+        it 'creates a new peep object' do
+           
+        end
+    end
 end
